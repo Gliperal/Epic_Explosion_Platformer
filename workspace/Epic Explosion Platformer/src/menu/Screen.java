@@ -49,7 +49,9 @@ public class Screen implements Renderable
         return on;
     }
     public void update(BufferedImage background){
-        Background = background;
+        Image img = background.getScaledInstance(sizeX, sizeY, BufferedImage.SCALE_FAST);
+        Background= new BufferedImage(sizeX,sizeY,BufferedImage.TYPE_INT_RGB);
+        Background.getGraphics().drawImage(img,0,0,null);
     }
     //sets if it should bee shown on screen
     public void onscreen(boolean on){
