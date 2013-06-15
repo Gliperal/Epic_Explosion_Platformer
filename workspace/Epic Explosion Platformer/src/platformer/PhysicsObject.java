@@ -17,8 +17,6 @@ public abstract class PhysicsObject extends Collidable {
 			speed.setComponent(CoordinateAxis.y, speedCap_vert);
 		}
 		
-		System.out.println("This is a test");
-		
 		for(CoordinateAxis axis : new CoordinateAxis[]{CoordinateAxis.x}) {
 			boolean hitAWall = move(speed.getComponent(axis), axis);
 			if(hitAWall) {
