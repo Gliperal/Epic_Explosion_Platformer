@@ -86,7 +86,7 @@ implements PackageControlObject
     	//System.out.println(MainMenu.status(0));
     	if(MainMenu.onscreen()){
     		if(MainMenu.status(1)==true){
-    			System.out.println("Yolo");
+    			//System.out.println("Yolo");
     			System.exit(0);
     		}
     		if(MainMenu.status(0)==true){
@@ -104,20 +104,14 @@ implements PackageControlObject
     	}
 	}
 	private BufferedImage makeImage(BufferedImage foo, String lol){
-		String applicationDirectory = new PublicVariables().getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-    	try {
-			applicationDirectory = URLDecoder.decode(applicationDirectory, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String applicationDirectory = PublicVariables.getApplicationDirectory();
     	File Foo = new File(applicationDirectory + lol);
     	System.out.println(applicationDirectory);
     	System.out.println(Foo.exists());
         try {
             foo =  ImageIO.read(Foo);
         } catch (IOException ex) {
-            System.out.println("Image not here");
+        	ErrorLog.addError("Missing image: " + lol);
         }
 		return foo;
 		

@@ -20,8 +20,7 @@ public class Screen implements Renderable
     ArrayList<Screen>Screens = new ArrayList<Screen>();
     //makes a screen for a specific place
     public Screen(BufferedImage background,boolean on,int x, int y,int sY,int sX){
-        menu.getScreens().add(on);
-        pos = menu.getScreens().size()-1;
+        pos = menu.addScreen(on);
         Image img = background.getScaledInstance(sX, sY, BufferedImage.SCALE_SMOOTH);
         Background= new BufferedImage(sX,sY,BufferedImage.TYPE_INT_RGB);
         Background.getGraphics().drawImage(img,0,0,null);
@@ -36,8 +35,7 @@ public class Screen implements Renderable
         posY =0;
         sizeX=width;
         sizeY=height;
-        menu.getScreens().add(on);
-        pos= menu.getScreens().size()-1;
+        pos = menu.addScreen(on);
         Image img = background.getScaledInstance(width, height, BufferedImage.SCALE_SMOOTH);
         Background= new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         Background.getGraphics().drawImage(img,0,0,null);
@@ -45,8 +43,7 @@ public class Screen implements Renderable
     //returns whether or not it can be shown on screen
     public boolean onscreen(){
         menu =Menu.getInstance();
-        boolean on = menu.getScreens().get(pos);
-        return on;
+        return menu.isScreenVisible(pos);
     }
     public void update(BufferedImage background){
         Image img = background.getScaledInstance(sizeX, sizeY, BufferedImage.SCALE_FAST);
@@ -59,7 +56,7 @@ public class Screen implements Renderable
         menu.getScreens().set(pos,on);
     }
     public void addClickable(Clickable lol){
-    	System.out.println("Added");
+    	//System.out.println("Added");
         Clickables.add(lol);
     }
     public void addScreen(Screen lol){
@@ -71,6 +68,11 @@ public class Screen implements Renderable
     public int x(){
         return posX;
     }
+    /**
+     * Tests whether a clickable item on the screen is clicked.
+     * @param i The index of the Clickable in question, in the order they were added, starting at 0.
+     * @return true if the component is being clicked; false otherwise.
+     */
     public boolean status(int i){
     	//System.out.println("Clickables:"+Clickables.size());
     	//System.out.println("i:"+i);

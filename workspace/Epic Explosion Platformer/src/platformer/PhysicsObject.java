@@ -13,9 +13,9 @@ public abstract class PhysicsObject extends Collidable {
 	}
 	
 	public void onUpdate() {
-		if(speed.getComponent(CoordinateAxis.y) > speedCap_vert) {
-			speed.setComponent(CoordinateAxis.y, speedCap_vert);
-		}
+		//if(speed.getComponent(CoordinateAxis.y) > speedCap_vert) {
+		//	speed.setComponent(CoordinateAxis.y, speedCap_vert);
+		//}
 		
 		for(CoordinateAxis axis : new CoordinateAxis[]{CoordinateAxis.x}) {
 			boolean hitAWall = move(speed.getComponent(axis), axis);

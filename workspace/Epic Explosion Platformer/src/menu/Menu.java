@@ -24,10 +24,19 @@ public class Menu
         width = w;
         height = h;
     }
-	public ArrayList<Boolean> getScreens() {
-		return screens;
+    /**
+     * 
+     * @param s
+     * @return the index assigned to the screen being added
+     */
+    public int addScreen(boolean on) {
+    	screens.add(on);
+    	return screens.size()-1;
+    }
+	public boolean isScreenVisible(int screenIndex) {
+		return screens.get(screenIndex);
 	}
-	public void setScreens(ArrayList<Boolean> screens) {
-		Menu.screens = screens;
-	}
+	//public void setScreens(ArrayList<Boolean> screens) {
+	//	Menu.screens = screens;
+	//}
 }
